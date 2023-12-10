@@ -1,0 +1,37 @@
+﻿<wd:Window
+    x:Class="WpfPrismNavigation.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:vm="clr-namespace:WpfPrismNavigation.ViewModels"
+    xmlns:wd="https://github.com/WPFDevelopersOrg/WPFDevelopers"
+    Title="Prism - Navigation"
+    Width="800"
+    Height="450"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <wd:DrawerMenu SelectedItem="{Binding SelectedItem}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding SelectionChangedCommand}" CommandParameter="" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <wd:DrawerMenuItem Text="Home">
+                <wd:DrawerMenuItem.Icon>
+                    <wd:PathIcon Kind="Home" />
+                </wd:DrawerMenuItem.Icon>
+            </wd:DrawerMenuItem>
+            <wd:DrawerMenuItem Text="Edge">
+                <wd:DrawerMenuItem.Icon>
+                    <wd:PathIcon Data="M511.949 40.96c-260.147 0-470.989 210.893-470.989 471.091 0 260.096 210.842 470.989 470.989 470.989s471.040-210.893 471.040-470.989c0-260.198-210.893-471.091-471.040-471.091zM512 665.651c-84.838 0-153.6-68.813-153.6-153.6s68.762-153.6 153.6-153.6c84.787 0 153.6 68.813 153.6 153.6s-68.813 153.6-153.6 153.6z" />
+                </wd:DrawerMenuItem.Icon>
+            </wd:DrawerMenuItem>
+        </wd:DrawerMenu>
+        <ContentControl Grid.Column="1" prism:RegionManager.RegionName="ContentRegion" />
+    </Grid>
+</wd:Window>
